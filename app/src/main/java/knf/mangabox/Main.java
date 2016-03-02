@@ -21,6 +21,8 @@ import com.thin.downloadmanager.DownloadRequest;
 import com.thin.downloadmanager.DownloadStatusListener;
 import com.thin.downloadmanager.ThinDownloadManager;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
@@ -86,7 +88,8 @@ public class Main extends AppCompatActivity {
                     sb.append(line + "\n");
                 }
                 br.close();
-                _response=sb.toString();
+                JSONObject jsonObject=new JSONObject(sb.toString());
+                _response=jsonObject.getString("version");
             }catch (Exception e){
                 e.printStackTrace();
                 _response="-1";
